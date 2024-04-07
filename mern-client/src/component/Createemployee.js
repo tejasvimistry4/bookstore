@@ -33,7 +33,7 @@ function Createemployee() {
         try {
 
             const response = await axios.post('http://localhost:5000/employee/adddemployee', employeedata)
-            
+
             console.log(response.data)
 
         } catch (error) {
@@ -111,6 +111,12 @@ function Createemployee() {
                 </tr>
             </fieldset>
 
+            <a className='ms-4' href="/book">book</a>
+            <hr></hr>
+            <a className='ms-4' href="/allbooks">allbooks</a>
+            <hr></hr>
+
+            <a className='ms-4' href="/allemployee">employee</a>
         </div>
     )
 }
