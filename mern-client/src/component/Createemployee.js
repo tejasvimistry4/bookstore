@@ -1,7 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function Createemployee() {
+
+    const navigate = useNavigate()
 
     const formFieldSet = {
         width: '300px',
@@ -33,6 +36,7 @@ function Createemployee() {
         try {
 
             const response = await axios.post('http://localhost:5000/employee/adddemployee', employeedata)
+            navigate('/allemployee');
 
             console.log(response.data)
 
@@ -90,6 +94,7 @@ function Createemployee() {
                                 <option key={department._id} value={department._id}>{department.department_name}</option>
                             ))}
                         </select>
+
                     </td>
                 </tr>
                 <tr>
@@ -111,10 +116,8 @@ function Createemployee() {
                 </tr>
             </fieldset>
 
-            <a className='ms-4' href="/book">book</a>
-            <hr></hr>
-            <a className='ms-4' href="/allbooks">allbooks</a>
-            <hr></hr>
+            <a className='ms-4' href="/book">book</a><br></br>
+            <a className='ms-4' href="/allbooks">allbooks</a><br></br>
 
             <a className='ms-4' href="/allemployee">employee</a>
         </div>

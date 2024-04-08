@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+
 const employeeSchema = new mongoose.Schema({
     employee_name: {
         type: String,
@@ -12,10 +13,9 @@ const employeeSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-
     employee_Department: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        type:  mongoose.Schema.Types.ObjectId,
+        required: true, 
         ref: 'department'
     },
     employee_working_days: {
@@ -23,17 +23,13 @@ const employeeSchema = new mongoose.Schema({
         required: true,
     },
     employee_Apsent_days: {
-        type: String,
+        type: Number,
         required: true,
     },
-})
-
+});
 employeeSchema.pre('find', function (next) {
-    this.populate('employee_Department')
-    next()
-})
+    this.populate('employee_Department', 'department_name'); 
+    next();
+});
 
-
-module.exports = mongoose.model('emplopyee', employeeSchema)
-
-
+module.exports = mongoose.model('employee', employeeSchema);

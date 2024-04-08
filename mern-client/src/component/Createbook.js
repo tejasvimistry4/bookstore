@@ -3,7 +3,11 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 
+import { useNavigate } from 'react-router-dom';
+
+
 const Createbook = () => {
+    const navigate = useNavigate()
     const formFieldSet = {
         width : '300px',
         padding: '10px',
@@ -38,6 +42,8 @@ const Createbook = () => {
                 'book_author':'',
                 'book_price':'',
             })
+            navigate('/allbooks');
+
         } catch (error) {
             console.error(error);
             console.error('Error inserting data:', error);

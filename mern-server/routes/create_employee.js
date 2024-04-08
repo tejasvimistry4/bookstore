@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.post('/adddemployee', async (req, res) => {
     try {
+
+        
         const employee = new Employeee({
             employee_name: req.body.employee_name,
             employee_email: req.body.employee_email,
@@ -32,15 +34,13 @@ router.post('/adddemployee', async (req, res) => {
 
 router.get('/viewemployee', async (req, res) => {
     try {
-        const employee = await Employeee.find();
-        res.status(200).json(employee);
+        const employees = await Employeee.find();
+        res.status(200).json(employees);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Failed to fetch employee' });
+        console.error('Error fetching employees:', error);
+        res.status(500).json({ error: 'Failed to fetch employees' });
     }
 });
-
-module.exports = router;
 
 
 // http://localhost:5000/employee/singleemployee
